@@ -1,6 +1,7 @@
 appnope==0.1.0
 backports.shutil-get-terminal-size==1.0.0
 decorator==4.1.2
+dj-database-url==0.4.2
 Django==1.10
 enum34==1.1.6
 ipython-genutils==0.2.0
@@ -10,9 +11,11 @@ pickleshare==0.7.4
 prompt-toolkit==1.0.15
 ptyprocess==0.5.2
 Pygments==2.2.0
+python-decouple==3.1
 pytz==2017.2
 scandir==1.5
 simplegeneric==0.8.1
 six==1.10.0
 traitlets==4.3.2
 wcwidth==0.1.7
+gunicorn==19.6.0
