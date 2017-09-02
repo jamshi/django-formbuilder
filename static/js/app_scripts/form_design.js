@@ -141,7 +141,10 @@ my_app.controller('formDesignCntrlr', ['$scope', '$compile', '$http', '$window',
 
     /*Save the form */
     $scope.saveForm = function () {
-        // use $.param jQuery function to serialize data from JSON
+        if($scope.formname.trim() == '') {
+            alert('Please provide a name to the form.');
+            return;
+        }
         var data = $.param({
             form_name: $scope.formname,
             form_html: $scope.constructHtml(),
