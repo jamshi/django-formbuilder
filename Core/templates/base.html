@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+{% load static %}
+{% load app_tags %}
+<html>
+<head lang="en">
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static "css/bootstrap-theme.min.css" %}" type="text/css">
+    <meta charset="UTF-8">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+      .list-group{
+        max-height: 900px !important;
+        overflow-y:auto;
+      }
+        .edit-actions > a > span{
+            margin: 8px;
+            font-size: 18px;
+        }
+        .form-control.green:focus {
+            border-color: #5cb85c;
+            outline: 0;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 233, 160, 0.6);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 233, 160, 0.6);
+        }
+        .form-control.red:focus {
+            border-color: #b85c5c;
+            outline: 0;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(233, 102, 102, 0.6);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(233, 102, 102, 0.6);
+        }
+        .panel-body{
+            min-height: 300px;
+        }
+
+    </style>
+    <title></title>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">FormBuilder - Jamsheed B P</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Form Designer</a></li>
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                      View Form <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        {% for form in my_forms %}
+                            <li><a href="{% url 'view_form' form.name%}">{{ form.name | Pretify }}</a></li>
+                        {% endfor %}
+
+                    </ul>
+                  </li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="container">
+<div class="container-fluid">
+<div class="row">
+    {% block content %}
+
+    {% endblock %}
+</div>
+</div>
+
+</div>
+<!-- /.container -->
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/angular.min.js" %}"></script>
+{% block page_scripts %}
+
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "formbuilder",
+  "version": "1.0.0",
+  "description": "Evaluation project Form Builder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jamsheed",
+  "license": "ISC",
+  "dependencies": {
+    "formBuilder": "^2.8.0"
+  }
+}

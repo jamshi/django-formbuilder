@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+{% load app_tags %}
+
+{% block content %}
+    <div ng-app="formdesign" ng-controller="formDesignCntrlr">
+        <div class="row">
+            <div class="col-lg-9 col-md-9">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <h3 class="panel-title">Form Designer</h3>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="dropdown">
+                                    <button class="btn btn-default dropdown-toggle pull-right" type="button"
+                                            id="dropdownMenu1"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="true">
+                                        + Add
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li ng-click="addControl('textInput')"><a href="#">TextBox</a></li>
+                                        <li ng-click="addControl('hiddenInput')"><a href="#">Hidden Input</a></li>
+                                        <li ng-click="addControl('textAreaInput')"><a href="#">TextArea</a></li>
+                                        <li ng-click="addControl('selectInput')"><a href="#">Select Input</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="panel-body form-horizontal" id="form_container">
+
+                    </div>
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label for="form_name" class="col-sm-3 control-label">Form Name:</label>
+
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="form_name"
+                                               placeholder="Enter Form Name" ng-model="formname">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" class="btn btn-primary" ng-click="saveForm()">Save Form</button>
+                                <button type="button" class="btn btn-danger" ng-click="clearDesigner()">Clear Form
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">My Forms</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            {% for form in my_forms %}
+                                <a href="#" class="list-group-item" ng-click="loadForm('{{ form.pk }}')">{{ form.name | Pretify }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% include "config_modal.html" %}
+    </div>
+{% endblock %}
+
+{% block page_scripts %}
+    <script type="text/javascript" src="{% static "js/app_scripts/form_design.js" %}"></script>
+{% endblock %}
